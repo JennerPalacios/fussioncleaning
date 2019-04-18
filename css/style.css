@@ -1,0 +1,334 @@
+body, header, section, article, h1, h2, h3, h4, p, footer, div {
+	margin: 0;
+	padding: 0;
+	display: block;
+}
+body, button, a {
+	font-family: 'Open Sans', sans-serif;
+}
+h1, h2, h3 {
+	font-family: 'Montserrat', sans-serif;
+}
+h1 {
+	font-size: 2.2rem;
+}
+h2 {
+	font-size: 2rem;
+}
+h3 {
+	font-size: 1.8rem;
+}
+h4 {
+	font-size: 1.5rem;
+}
+
+
+
+
+
+.wrapper {
+	display: block;
+	clear: both;
+	width: 70rem;
+	margin: auto;
+	font-size: 0;
+}
+
+.float-right {
+	float: right;
+}
+.float-left {
+	float: left;
+}
+
+
+
+
+
+header div, header a img, header nav ul, header nav ul li {
+	display: inline-block;
+}
+header a img {
+	border: 0;
+	height: 7rem;
+	width: auto;
+	padding: 0.3rem 0;
+}
+header nav {
+	display: block;
+	margin-top: 2.5rem;
+}
+header nav ul, footer ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+header nav ul li{
+	border-right: solid 1px #CCC;
+}
+header nav ul li:nth-child(5) {
+	border-right: none;
+}
+header nav ul li a, footer ul li a {
+	font-family: 'Muli', sans-serif;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 1rem;
+	padding: 0 2rem;
+}
+header nav ul li:nth-child(1) a {
+	padding: 0 2rem 0 0;
+}
+header nav ul li:nth-child(5) a {
+	padding: 0 0 0 2rem;
+}
+header #hours-top {
+	font-size: 1rem;
+	line-height: 0.9rem;
+	font-family: Arial;
+	margin-top: 1.5rem;
+}
+header #phone-top{
+	font-size: 1.5rem;
+	float: right;
+	font-weight: bold;
+	margin: 1.5rem 0;
+}
+#clock {
+	font-size: 2rem;
+	line-height: 0;
+}
+#phone-glyph {
+	font-size: 1.3rem;
+	line-height: 0;
+}
+
+
+
+
+img {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+
+
+
+
+section, .gap {
+	padding: 10rem 0;
+}
+.mdgap {
+	padding: 5rem 0;
+}
+.nogap {
+	padding: 0;
+}
+.gaptop {
+	padding: 10rem 0 0 0;
+}
+.mdgaptop {
+	padding: 5rem 0 0 0;
+}
+.gapbottom {
+	padding: 0 0 10rem 0;
+}
+.gapbottom {
+	padding: 0 0 5rem 0;
+}
+.cardgap {
+	padding: 1rem;
+}
+section ul {
+	line-height: 4rem;
+}
+
+article {
+	font-size: 1rem;
+}
+#phone-impo div {
+	display: inline-block;
+}
+#phone-impo, #button-impo, #email-impo {
+	font-size: 1.5rem;
+}
+
+
+
+.purplecard p, .purplecardt p, 
+.lpurplecard p, .lpurplecardt p,
+.bluecard p, .bluecardt p,
+.lbluecard p, .lbluecardt p,
+.greencard p, .greencardt p,
+.lgreencard p, .lgreencardt p {
+	padding-left: 1.5em;
+}
+.purplecard img, .purplecardt img, 
+.lpurplecard img, .lpurplecardt img,
+.bluecard img, .bluecardt img,
+.lbluecard img, .lbluecardt img,
+.greencard img, .greencardt img,
+.lgreencard img, .lgreencardt img {
+	width: 50%;
+	position: relative;
+	left: 25%;
+}
+.purplecard, .purplecardt, 
+.lpurplecard, .lpurplecardt,
+.bluecard, .bluecardt,
+.lbluecard, .lbluecardt,
+.greencard, .greencardt,
+.lgreencard, .lgreencardt {
+	border-radius: 1rem 0 5rem 0;
+	margin: 1rem;
+	padding: 1rem;
+}
+.reviews article {
+	border-radius: 0 2rem 0 3rem;
+	padding: 1rem;
+	margin: 1.5rem;
+}
+blockquote {
+	display: block;
+	margin: 0.5rem auto 0 auto;
+	padding: 0 1rem 1rem 3rem;
+	background: url("../img/quote01.png") left top no-repeat, url("../img/quote02.png") right bottom no-repeat;
+}
+.name {
+	font-family: "Oswald";
+	font-size: 1.5rem;
+}
+.date {
+	font-family: "Fjalla One";
+}
+
+
+
+
+
+section form {
+	font-size: 0;
+}
+section form div {
+	padding: 0.5rem 0;
+}
+section form label {
+	display: inline-block;
+	clear: both;
+	font-size: 1.2rem;
+	color: #FFFFFF;
+	padding: 0.5rem 1rem;
+	border: solid 1px transparent;
+	border-radius: 5px 5px 0 0;
+	background: rgba(0,130,0,0.3);
+}
+section form label .glyphicon {
+	position: relative;
+	bottom: -0.1rem;
+}
+section form input, .fakeinput {
+	display: block;
+	font-size: 1.3rem;
+	width: 95%;
+	padding: 0.5rem;
+	margin: 0;
+	border-radius: 0 10px 10px 10px;
+	border: solid 1px transparent;
+	background: rgba(0,0,0,0.2);
+	position: relative;
+	top: -2px;
+}
+section form div div label {
+	text-align: center;
+	background: rgba(255,255,255,0.3);
+	color: #000000;
+	cursor: pointer;
+	border-radius: 40%;
+}
+section form div div label input[type="radio"] {
+	width: 1rem;
+	height: 1rem;
+	margin: auto;
+}
+
+
+
+
+
+footer nav ul li {
+	margin: 0.5rem;
+}
+footer nav ul li a {
+	display: block;
+	padding: 0.5rem;
+}
+footer form, footer form div {
+	font-size: 0;
+}
+footer form > div {
+	width: 50%;
+}
+footer form label {
+	font-size: 1rem;
+	padding: 0.5rem;
+	margin: 0;
+	border: solid 1px #BBBBBB;
+	border-radius: 10px 0 0 10px;
+	background: #EEEEEE;
+}
+footer form label .glyphicon {
+	position: relative;
+	bottom: -0.1rem;
+}
+footer form input {
+	font-size: 1.15rem;
+	width: 70%;
+	padding: 0.5rem;
+	margin: 0;
+	border-radius: 0 10px 10px 0;
+	border: solid 1px #BBBBBB;
+}
+footer form div:nth-child(2){
+	text-align: right;
+}
+footer form textarea {
+	border-radius: 10px;
+	border: solid 1px #BBBBBB;
+}
+footer form div:nth-child(3), footer form textarea {
+	width: 99.5%;
+	margin: 0.5rem 0 0 0;
+}
+footer form button {
+	float: right;
+	margin: 0.5rem 1.5rem 0 0;
+}
+
+
+form {
+	padding: 0;
+	margin: 1rem 0 0 0;
+}
+.inline {
+	display: inline-block;
+}
+.block {
+	display: block;
+}
+
+.top {
+	vertical-align: top;
+}
+.bottom {
+	vertical-align: bottom;
+}
+.center {
+	text-align: center;
+}
+.left {
+	text-align: left;
+}
+.right {
+	text-align: right;
+}
