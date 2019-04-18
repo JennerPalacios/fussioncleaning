@@ -26,6 +26,9 @@ h4 {
 
 
 
+html, body {
+	min-width: 70rem;
+}
 .wrapper {
 	display: block;
 	clear: both;
