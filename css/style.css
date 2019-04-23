@@ -1,4 +1,4 @@
-body, header, section, article, h1, h2, h3, h4, p, footer, div {
+html, body, header, section, article, h1, h2, h3, h4, p, footer, div {
 	margin: 0;
 	padding: 0;
 	display: block;
@@ -25,13 +25,11 @@ h4 {
 
 
 
-
 html, body {
 	min-width: 70rem;
 }
 .wrapper {
 	display: block;
-	clear: both;
 	width: 70rem;
 	margin: auto;
 	font-size: 0;
@@ -47,7 +45,9 @@ html, body {
 
 
 
-
+header {
+	width: 100%;
+}
 header div, header a img, header nav ul, header nav ul li {
 	display: inline-block;
 }
@@ -119,30 +119,39 @@ img {
 
 
 
-section, .gap {
-	padding: 10rem 0;
-}
-.mdgap {
+.pad {
 	padding: 5rem 0;
 }
-.nogap {
+.nopad {
 	padding: 0;
 }
-.gaptop {
-	padding: 10rem 0 0 0;
+.padmd {
+	padding: 2.5rem 0;
 }
-.mdgaptop {
+.padtop {
 	padding: 5rem 0 0 0;
 }
-.gapbottom {
-	padding: 0 0 10rem 0;
+.padtopmd {
+	padding: 2.5rem 0 0 0;
 }
-.gapbottom {
+.padbottom {
 	padding: 0 0 5rem 0;
 }
-.cardgap {
-	padding: 1rem;
+.padbottommd {
+	padding: 0 0 2.5rem 0;
 }
+.padleft {
+	padding-left: 1.5em;
+}
+.padall {
+	padding: 5rem;
+}
+.padallmd {
+	padding: 2.5rem;
+}
+
+
+
 section ul {
 	line-height: 4rem;
 }
@@ -159,34 +168,25 @@ article {
 
 
 
-.purplecard p, .purplecardt p, 
-.lpurplecard p, .lpurplecardt p,
-.bluecard p, .bluecardt p,
-.lbluecard p, .lbluecardt p,
-.greencard p, .greencardt p,
-.lgreencard p, .lgreencardt p {
-	padding-left: 1.5em;
+
+.card {
+	border-radius: 1rem 0 5rem 0;
+	margin: 1rem;
+	padding: 1rem;	
 }
-.purplecard img, .purplecardt img, 
-.lpurplecard img, .lpurplecardt img,
-.bluecard img, .bluecardt img,
-.lbluecard img, .lbluecardt img,
-.greencard img, .greencardt img,
-.lgreencard img, .lgreencardt img {
+.card img {
 	width: 50%;
 	position: relative;
 	left: 25%;
 }
-.purplecard, .purplecardt, 
-.lpurplecard, .lpurplecardt,
-.bluecard, .bluecardt,
-.lbluecard, .lbluecardt,
-.greencard, .greencardt,
-.lgreencard, .lgreencardt {
-	border-radius: 1rem 0 5rem 0;
-	margin: 1rem;
-	padding: 1rem;
-}
+
+
+
+/*
+
+	REVIEWS
+
+*/
 .reviews article {
 	border-radius: 0 2rem 0 3rem;
 	padding: 1rem;
@@ -210,6 +210,14 @@ blockquote {
 
 
 
+
+
+
+/*
+
+	SECTIONS
+
+*/
 section form {
 	font-size: 0;
 }
@@ -220,11 +228,9 @@ section form label {
 	display: inline-block;
 	clear: both;
 	font-size: 1.2rem;
-	color: #FFFFFF;
 	padding: 0.5rem 1rem;
 	border: solid 1px transparent;
 	border-radius: 5px 5px 0 0;
-	background: rgba(0,130,0,0.3);
 }
 section form label .glyphicon {
 	position: relative;
@@ -238,14 +244,11 @@ section form input, .fakeinput {
 	margin: 0;
 	border-radius: 0 10px 10px 10px;
 	border: solid 1px transparent;
-	background: rgba(0,0,0,0.2);
 	position: relative;
 	top: -2px;
 }
 section form div div label {
 	text-align: center;
-	background: rgba(255,255,255,0.3);
-	color: #000000;
 	cursor: pointer;
 	border-radius: 40%;
 }
