@@ -149,6 +149,9 @@ img {
 .padmd {
 	padding: 2.5rem 0;
 }
+.padbig {
+	padding: 10rem 0;
+}
 .padtop {
 	padding: 5rem 0 0 0;
 }
