@@ -230,6 +230,10 @@ footer nav ul li.here1, footer nav ul li.here2, footer nav ul li.here3, footer n
 }
 
 /* IMAGE */
+.bg000 {
+	background: url("./../img/000.jpg") no-repeat center;
+	background-size: cover;
+}
 .bg001 {
 	background: url("./../img/001.jpg") no-repeat center;
 	background-size: cover;
