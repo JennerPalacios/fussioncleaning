@@ -22,19 +22,19 @@ header {
 header, header nav ul li a, footer ul li a {
 	color: #700970;
 }
-header nav ul li:nth-child(1) a:hover {
+header nav ul li:nth-child(1) a:hover, .here1 {
 	border-bottom: solid 5px #700970;
 }
-header nav ul li:nth-child(2) a:hover {
+header nav ul li:nth-child(2) a:hover, .here2 {
 	border-bottom: solid 5px #C727C4;
 }
-header nav ul li:nth-child(3) a:hover {
+header nav ul li:nth-child(3) a:hover, .here3 {
 	border-bottom: solid 5px #25B2D8;
 }
-header nav ul li:nth-child(4) a:hover {
+header nav ul li:nth-child(4) a:hover, .here4 {
 	border-bottom: solid 5px #39B51A;
 }
-header nav ul li:nth-child(5) a:hover {
+header nav ul li:nth-child(5) a:hover, .here5 {
 	border-bottom: solid 5px #FC7070;
 }
 #hours-top {
@@ -74,6 +74,20 @@ section {
 	background: #FFFFFF;
 	color: #000000;
 }
+.purp, .cyan, .gree {
+	font-weight: bold;
+	font-size: 1.2em;
+}
+.purp {
+	color: #700970;
+}
+.cyan {
+	color: #2980F7;
+}
+.gree {
+	color: #397A1A;
+}
+
 
 
 
@@ -84,6 +98,12 @@ section {
 */
 .card {
 	box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+article ul li {
+	color: #000;
+}
+article ul li span {
+	color: #FFF;
 }
 
 
@@ -99,7 +119,7 @@ section {
 .date {
 	color: #CCCCCC;
 }
-.reviews article {
+.reviews article, .reviews article img {
 	background: #39B51A;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -114,20 +134,23 @@ section {
 footer nav ul li a {
 	border-right: solid 20px #DDDDDD;
 }
-footer nav ul li:nth-child(1) a:hover {
+footer nav ul li:nth-child(1) a:hover, footer nav ul li.here1 a {
 	border-right: solid 20px #700970;
 }
-footer nav ul li:nth-child(2) a:hover {
+footer nav ul li:nth-child(2) a:hover, footer nav ul li.here2 a {
 	border-right: solid 20px #C727C4;
 }
-footer nav ul li:nth-child(3) a:hover {
+footer nav ul li:nth-child(3) a:hover, footer nav ul li.here3 a {
 	border-right: solid 20px #25B2D8;
 }
-footer nav ul li:nth-child(4) a:hover {
+footer nav ul li:nth-child(4) a:hover, footer nav ul li.here4 a {
 	border-right: solid 20px #39B51A;
 }
-footer nav ul li:nth-child(5) a:hover {
+footer nav ul li:nth-child(5) a:hover, footer nav ul li.here5 a {
 	border-right: solid 20px #FC7070;
+}
+footer nav ul li.here1, footer nav ul li.here2, footer nav ul li.here3, footer nav ul li.here4, footer nav ul li.here5 {
+	border-bottom: none;
 }
 
 
@@ -142,6 +165,9 @@ footer nav ul li:nth-child(5) a:hover {
 }
 .bgwhitet {
 	background: rgba(255,255,255,0.8);
+}
+.bgwhitett {
+	background: rgba(255,255,255,0.6);
 }
 
 /* PURPLE */
@@ -262,9 +288,17 @@ section form label {
 section form input, .fakeinput {
 	background: rgba(0,0,0,0.1);
 }
+.fakeinput2 {
+	background: rgba(40,180,220,0.5);
+}
 section form div div label {
 	background: rgba(255,255,255,0.3);
 	color: #000000;
+}
+
+.txtAreaTransparent {
+	background: transparent;
+	border: transparent;
 }
 
 

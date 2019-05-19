@@ -1,3 +1,6 @@
+* {
+	box-sizing: border-box;
+}
 html, body, header, section, article, h1, h2, h3, h4, p, footer, div {
 	margin: 0;
 	padding: 0;
@@ -20,6 +23,24 @@ h3 {
 }
 h4 {
 	font-size: 1.5rem;
+}
+.underlined {
+	border-bottom: solid 0.5rem #000;
+	margin-bottom: 1rem;
+}
+.toplined {
+	border-top: solid 0.5rem #000;
+	margin-bottom: 1rem;
+}
+.toprightlined {
+	border-top: solid 0.5rem #000;
+	border-right: solid 0.5rem #000;
+	margin-bottom: 1rem;
+}
+.bottomleftlined {
+	border-left: solid 0.5rem #000;
+	border-bottom: solid 0.5rem #000;
+	margin-bottom: 1rem;
 }
 
 
@@ -53,7 +74,7 @@ header div, header a img, header nav ul, header nav ul li {
 }
 header a img {
 	border: 0;
-	height: 7rem;
+	height: 7.6rem;
 	width: auto;
 	padding: 0.3rem 0;
 }
@@ -149,6 +170,12 @@ img {
 .padallmd {
 	padding: 2.5rem;
 }
+.padallmdnl {
+	padding: 2.5rem 2.5rem 2.5rem 0;
+}
+.padallmdnr {
+	padding: 2.5rem 0 2.5rem 2.5rem;
+}
 
 
 
@@ -168,16 +195,23 @@ article {
 
 
 
-
 .card {
 	border-radius: 1rem 0 5rem 0;
 	margin: 1rem;
 	padding: 1rem;	
 }
 .card img {
-	width: 50%;
 	position: relative;
-	left: 25%;
+	border-radius: 1rem 0 5rem 0;
+}
+article ul {
+	margin: 1em 0;
+	padding: 0 2em;
+}
+article ul li {
+	margin: 0 0 0 0.5em;
+	padding: 0 0 0.5em 0;
+	line-height: 1.5em;
 }
 
 
@@ -187,15 +221,48 @@ article {
 	REVIEWS
 
 */
-.reviews article {
+.slider {
+	width: 67rem;
+	margin: auto;
+}
+.slider img {
+	width: 150px;
+	margin-right: 1.5em;
+	border-radius: 0 0 0 2rem;
+	padding: 0.3rem;
+}
+.slick-slide {
+	margin: 0px;
+}
+.slick-slide div {
+	width: 100%;
+}
+.slick-prev:before, .slick-next:before {
+	color: black;
+}
+.slick-slide {
+	transition: all ease-in-out .3s;
+	opacity: .2;
+}
+.slick-active {
+	opacity: .5;
+}
+.slick-current {
+	opacity: 1;
+}
+.slick-dots li button:before {
+	font-size: 30px;
+}
+.reviews div article {
 	border-radius: 0 2rem 0 3rem;
 	padding: 1rem;
-	margin: 1.5rem;
+	margin: 0.5rem 0.5rem 3rem 0.5rem;
+	height: 11.5rem;
 }
 blockquote {
 	display: block;
-	margin: 0.5rem auto 0 auto;
-	padding: 0 1rem 1rem 3rem;
+	margin: 0 0 0 7.8rem;
+	padding: 0.5rem 1rem 1rem 2.5rem;
 	background: url("../img/quote01.png") left top no-repeat, url("../img/quote02.png") right bottom no-repeat;
 }
 .name {
@@ -236,7 +303,7 @@ section form label .glyphicon {
 	position: relative;
 	bottom: -0.1rem;
 }
-section form input, .fakeinput {
+section form input, .fakeinput, .txtAreaTransparent {
 	display: block;
 	font-size: 1.3rem;
 	width: 95%;
@@ -257,7 +324,9 @@ section form div div label input[type="radio"] {
 	height: 1rem;
 	margin: auto;
 }
-
+.w100, .fakeinput2, .txtAreaTransparent {
+	width: 100%;
+}
 
 
 
@@ -303,7 +372,7 @@ footer form textarea {
 	border: solid 1px #BBBBBB;
 }
 footer form div:nth-child(3), footer form textarea {
-	width: 99.5%;
+	width: 100%;
 	margin: 0.5rem 0 0 0;
 }
 footer form button {

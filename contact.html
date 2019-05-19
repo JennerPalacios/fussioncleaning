@@ -2,13 +2,19 @@
 <html dir="ltr" lang="en-US">
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<link rel="icon" type="image/x-icon" href="img/favicon.ico">
 
 	<title>Cleaning Services - FussionCleaning.com</title>
 	
 	<link href="https://fonts.googleapis.com/css?family=Montserrat|Muli|Open+Sans|Fjalla+One|Oswald|Jura" rel="stylesheet">
+	<link href="css/slick.css" rel="stylesheet" type="text/css" />
+	<link href="css/slick-theme.css" rel="stylesheet" type="text/css" />
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
 	<link href="css/colors.css" rel="stylesheet" type="text/css" />
 	<link href="css/grid.css" rel="stylesheet" type="text/css" />
+	<script>var page="contact"</script>
+	<script src="inc/testimonials.js"></script>
+	
 </head>
 
 <body>
@@ -23,70 +29,52 @@
 		</div>
 	</header>
 	
-	<section>
-		<div class="wrapper">
-			<div class="inline two left top">
-				<article class="padtop">
-					<h1>SAVE TIME AND MONEY!</h1>
-					<p>
-						While our team is cleaning your home you have an opportunity to spend time with your friends and family... or simply go shopping!
-					</p>
-				</article>
-				<a class="blueButton" href="#"><span class="glyphicon glyphicon-list-alt"></span> Request an Estimate</a>
-				<a class="greenButton" href="#"><span class="glyphicon glyphicon-earphone"></span> Contact Us</a>
-			</div>
-			<div class="inline two right top">
-				<img src="img/001.jpg" style="margin-top: 0.5rem;" />
-			</div>
-		</div>
-	</section>
-	
-	<section class="pad bgdblue">
-		<div class="wrapper">
-			<div class="one center">
+	<section class="nopad bg004">
+		<div class="wrapper pad">
+			<div class="one center bgwhitett">
 				<h2>Why choose us?</h2>
 			</div>
 			<div class="inline three">
-				<article class="card bgbluet">
+				<article class="card bgdbluet">
 					<ul>
-						<li>
+						<li class="twhite">
 							Reliable Service
 						</li>
-						<li>
+						<li class="twhite">
 							Bonded and Insured
 						</li>
-						<li>
+						<li class="twhite">
 							Certified Professional Cleaners
 						</li>
 					</ul>
 				</article>
 			</div>
 			<div class="inline three">
-				<article class="card bgbluet">
+				<article class="card bgdbluet">
 					<ul>
-						<li>
-							Customized Cleaning
+						<li class="twhite">
+							Locally Owned
 						</li>
-						<li>
-							Move In/Out Cleaning
+						<li class="twhite">
+							Trusted and Experienced
 						</li>
-						<li>
+						<li class="twhite">
 							100% Satisfaction Guaranteed
 						</li>
 					</ul>
 				</article>
 			</div>
 			<div class="inline three">
-				<article class="card bgbluet">
+				<article class="card bgdbluet">
 					<ul>
-						<li>
+						<li class="twhite">
+							Deep Cleaning
+						</li>
+						<li class="twhite">
 							Customized Cleaning
 						</li>
-						<li>
+						<li class="twhite">
 							Move In/Out Cleaning
-						</li>
-						<li>
-							100% Satisfaction Guaranteed
 						</li>
 					</ul>
 				</article>
@@ -105,7 +93,60 @@
 			<div class="inline three center">
 				<article>
 					<small>Get An:</small><br />
-					<div id="button-impo"><a href="#"><span class="glyphicon glyphicon-tasks"></span> Instant Estimate</a></div>
+					<div id="button-impo"><a href="estimates.html"><span class="glyphicon glyphicon-tasks"></span> Instant Estimate</a></div>
+				</article>
+			</div>
+			<div class="inline three center">
+				<article>
+					<small>Our E-Mail:</small><br />
+					<div id="email-impo"><span class="glyphicon glyphicon-envelope"></span> <script src="inc/email.js"></script></div>
+				</article>
+			</div>
+		</div>
+	</section>
+	
+	<section class="padmd bglgreent">
+		<div class="wrapper">
+			<h1 class="center">Professional Cleaning Services You Can Trust!<br>Let us know how we can help you:</h1>
+			<form>
+				<div class="inline two left top">
+					<label for="name"><span class="glyphicon glyphicon-user"></span> Full Name:</label>
+					<input class="bglbluet" id="name" name="name" type="text" placeholder="Jane Doe" required />
+				</div>
+				<div class="inline two left top">
+					<label for="email"><span class="glyphicon glyphicon-envelope"></span> E-Mail:</label>
+					<input class="bglbluet w100" id="email" name="email" type="email" placeholder="jane.doe@janefamily.com" required />
+				</div>
+				<div class="inline four left top">
+					<label for="phone"><span class="glyphicon glyphicon-phone"></span> Phone Number:</label>
+					<input class="bglbluet" id="phone" name="phone" type="text" placeholder="123-456-7890" required />
+				</div>
+				
+				<div class="inline third left top">
+					<label for="pets"><span class="glyphicon glyphicon-comment"></span> Comments:</label>
+					<div class="fakeinput fakeinput2">
+						<textarea class="txtAreaTransparent" rows="5" required></textarea>
+					</div>
+				</div>
+				<div class="block one right top">
+					<button type="submit" class="blueButton">Send <span class="glyphicon glyphicon-circle-arrow-right"></span></button>
+				</div>
+			</form>
+		</div>
+	</section>
+	
+	<section class="padmd">
+		<div class="wrapper">
+			<div class="inline three center">
+				<article>
+					<small>Call Us At:</small><br />
+					<div id="phone-impo"><script src="inc/phone.js"></script></div>
+				</article>
+			</div>
+			<div class="inline three center">
+				<article>
+					<small>Get An:</small><br />
+					<div id="button-impo"><a href="estimates.html"><span class="glyphicon glyphicon-tasks"></span> Instant Estimate</a></div>
 				</article>
 			</div>
 			<div class="inline three center">
@@ -122,29 +163,10 @@
 			<div class="center">
 				<h2>What Our Costumers Are Saying:</h2>
 			</div>
-			<div class="inline two left reviews">
-				<article>
-					<span class="name">Jenner Palacios</span> <span class="date">(01/01/2015)</span>:
-						<blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</blockquote>
-				</article>
-			</div>
-			<div class="inline two left reviews">
-				<article>
-					<span class="name">Jenner Palacios</span> <span class="date">(01/01/2015)</span>:
-						<blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</blockquote>
-				</article>
-			</div>
-			<div class="inline two left reviews">
-				<article>
-					<span class="name">Jenner Palacios</span> <span class="date">(01/01/2015)</span>:
-						<blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</blockquote>
-				</article>
-			</div>
-			<div class="inline two left reviews">
-				<article>
-					<span class="name">Jenner Palacios</span> <span class="date">(01/01/2015)</span>:
-						<blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</blockquote>
-				</article>
+			<div class="reviews slider" id="quotes">
+				<script>
+					document.getElementById("quotes").innerHTML=testimoniesOutput;
+				</script>
 			</div>
 		</div>
 	</section>
@@ -180,5 +202,21 @@
 			</div>
 		</div>
 	</footer>
+	
+	<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+	<script src="js/slick.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(document).on('ready', function() {
+			$(".reviews").slick({
+				dots: true,
+				infinite: true,
+				centerMode: true,
+				slidesToShow: 1,
+				slidesToScroll: 3,
+				autoplay: true,
+				autoplaySpeed: 5000
+			});
+		});
+	</script>
 </body>
 </html>
