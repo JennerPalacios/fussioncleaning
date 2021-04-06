@@ -33,7 +33,7 @@ const bot=new Discord.Client({fetchAllMembers: true}); bot.commands=new Discord.
 //
 const fs=require("fs"), request=require("request"), 
 	botConfig=require("./config/botConfig.json"), globalSettings=require("./config/globalSettings.json"),
-	serverPokeSettings=require("./data/serverPokeSettings.json"),
+	serverJoin=require("./data/serverJoin.json"),
 	chuckNorris=require("./data/chuckNorris.json"),
 	pokemon=require("./data/pokemon.json"), pokemonMoves=require("./data/pokemonMoves.json"),
 	pokemonTypes=require("./data/pokemonTypes.json");
@@ -66,8 +66,7 @@ for(const file of commands){
 //
 // SHORTEN JSON DATA AND CONSOLE COLORS
 //
-const advText=globalSettings.advText, foulText=globalSettings.foulText, pokeCity=serverPokeSettings.pokeCity,
-	pokeBadge=serverPokeSettings.pokeBadge, pokeRegion=serverPokeSettings.pokeRegion, pokeCuttie=serverPokeSettings.pokeCuttie,
+const advText=globalSettings.advText, foulText=globalSettings.foulText,
 	cc={"reset":"\x1b[0m","ul":"\x1b[4m","lred":"\x1b[91m","red":"\x1b[31m","lgreen":"\x1b[92m","green":"\x1b[32m","lyellow":"\x1b[93m","yellow":"\x1b[33m",
 		"lblue":"\x1b[94m","blue":"\x1b[34m","lcyan":"\x1b[96m","cyan":"\x1b[36m","pink":"\x1b[95m","purple":"\x1b[35m","bgwhite":"\x1b[107m","bggray":"\x1b[100m",
 		"bgred":"\x1b[41m","bggreen":"\x1b[42m","bglgreen":"\x1b[102m","bgyellow":"\x1b[43m","bgblue":"\x1b[44m","bglblue":"\x1b[104m","bgcyan":"\x1b[106m",
@@ -233,7 +232,7 @@ Welcome to **${member.guild.name}**'s Discord, ${member}.
 setInterval(function(){
 	let timeNow=new Date().getTime(),dbTime="",daysLeft="",logginChannel="",sid="",member="";
 	if(myDB!=="disabled"){
-		myDB.query(`SELECT * FROM PokeHelp_bot.temporaryRoles;`,(error,results)=>{
+		myDB.query(`SELECT * FROM Dr4Network_bot.temporaryRoles;`,(error,results)=>{
 			if(error){console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" TemporaryRoles timer, could not "+cc.yellow+"DELETE FROM"+cc.cyan+" temporaryRoles"+cc.reset+" table\nRAW: "+error);}
 			else{
 				if(results.length<1){
@@ -251,7 +250,7 @@ setInterval(function(){
 									let daysRemaining=Math.ceil(daysLeft/86400000), remindAt=(serverSettings.servers[sid].tempRoles.remindAtDays*1), dayORdays=" day";
 									if(serverSettings.servers[sid].tempRoles.remindAtDays>1){dayORdays=" days"}
 									if(daysRemaining===remindAt){
-										myDB.query(`UPDATE PokeHelp_bot.temporaryRoles SET reminderSent=? WHERE userID="${rows[rowNumber].userID}" AND temporaryRole="${rows[rowNumber].temporaryRole}";`,
+										myDB.query(`UPDATE Dr4Network_bot.temporaryRoles SET reminderSent=? WHERE userID="${rows[rowNumber].userID}" AND temporaryRole="${rows[rowNumber].temporaryRole}";`,
 											["yes"],error=>{
 												if(error){console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not "+cc.yellow+"UPDATE"+cc.cyan+" temporaryRoles"+cc.reset+" table\nRAW: "+error);}
 											}
@@ -330,7 +329,7 @@ setInterval(function(){
 								);
 							}
 							
-							myDB.query(`DELETE FROM PokeHelp_bot.temporaryRoles WHERE userID="${rows[rowNumber].userID}" AND temporaryRole="${rows[rowNumber].temporaryRole}";`,error=>{
+							myDB.query(`DELETE FROM Dr4Network_bot.temporaryRoles WHERE userID="${rows[rowNumber].userID}" AND temporaryRole="${rows[rowNumber].temporaryRole}";`,error=>{
 								if(error){console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" TemporaryRoles timer, could not "+cc.yellow+"DELETE FROM"+cc.cyan+" temporaryRoles"+cc.reset+" table\nRAW: "+error);}
 							});
 						}
@@ -482,46 +481,46 @@ bot.on("ready", ()=>{
 	//CHARACTER SET utf8mb4 COLLATE utf8mb4_bin
 	if(myDB!=="disabled"){
 		// CREATE DATABASE
-		myDB.query(`CREATE DATABASE IF NOT EXISTS PokeHelp_bot CHARACTER SET=utf8mb4 COLLATE=utf8mb4_unicode_ci;`,error=>{
-			if(error){console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not "+cc.yellow+"CREATE DATABASE"+cc.cyan+" PokeHelp_bot "+cc.reset+"\nRAW: "+error)}
+		myDB.query(`CREATE DATABASE IF NOT EXISTS Dr4Network_bot CHARACTER SET=utf8mb4 COLLATE=utf8mb4_unicode_ci;`,error=>{
+			if(error){console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not "+cc.yellow+"CREATE DATABASE"+cc.cyan+" Dr4Network_bot "+cc.reset+"\nRAW: "+error)}
 		});
 
 		// CREATE TABLE MEMBER AGREEMENT TRACKER
-		myDB.query(`CREATE TABLE IF NOT EXISTS PokeHelp_bot.agreedMembers (userID TEXT,userName TEXT,serverID TEXT,serverName TEXT,dateAccepted TEXT);`,error=>{
+		myDB.query(`CREATE TABLE IF NOT EXISTS Dr4Network_bot.agreedMembers (userID TEXT,userName TEXT,serverID TEXT,serverName TEXT,dateAccepted TEXT);`,error=>{
 			if(error){console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not "+cc.yellow+"CREATE TABLE"+cc.cyan+" agreedMembers "+cc.reset+"in database\nRAW: "+error)}
 		});
 
 		// CREATE TABLE CHAT TRACKER
-		myDB.query(`CREATE TABLE IF NOT EXISTS PokeHelp_bot.chatTracker (userID TEXT,userName TEXT,lastMsgID TEXT,lastMsg TEXT,lastChanID TEXT,lastChanName TEXT,guildID TEXT,guildName TEXT,lastDate TEXT,points INTEGER,level INTEGER);`,error=>{
+		myDB.query(`CREATE TABLE IF NOT EXISTS Dr4Network_bot.chatTracker (userID TEXT,userName TEXT,lastMsgID TEXT,lastMsg TEXT,lastChanID TEXT,lastChanName TEXT,guildID TEXT,guildName TEXT,lastDate TEXT,points INTEGER,level INTEGER);`,error=>{
 			if(error){console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not "+cc.yellow+"CREATE TABLE"+cc.cyan+" chatTracker "+cc.reset+"in database\nRAW: "+error)}
 		});
 
 		// CREATE TABLE COMMAND SPAM CONTROL
-		myDB.query(`CREATE TABLE IF NOT EXISTS PokeHelp_bot.cmdSpamControl (userID TEXT,userName TEXT,guildID TEXT,guildName TEXT,lastDate TEXT,cmdCount TEXT);`,error=>{
+		myDB.query(`CREATE TABLE IF NOT EXISTS Dr4Network_bot.cmdSpamControl (userID TEXT,userName TEXT,guildID TEXT,guildName TEXT,lastDate TEXT,cmdCount TEXT);`,error=>{
 			if(error){console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not "+cc.yellow+"CREATE TABLE"+cc.cyan+" cmdSpamControl "+cc.reset+"in database\nRAW: "+error)}
 		});
 
 		// CREATE TABLE TEMPORARY ROLES
-		myDB.query(`CREATE TABLE IF NOT EXISTS PokeHelp_bot.temporaryRoles (userID TEXT,userName TEXT,temporaryRole TEXT,guildID TEXT,guildName TEXT,startDate TEXT,endDate TEXT,addedByID TEXT,addedByName TEXT);`,error=>{
+		myDB.query(`CREATE TABLE IF NOT EXISTS Dr4Network_bot.temporaryRoles (userID TEXT,userName TEXT,temporaryRole TEXT,guildID TEXT,guildName TEXT,startDate TEXT,endDate TEXT,addedByID TEXT,addedByName TEXT);`,error=>{
 			if(error){console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not "+cc.yellow+"CREATE TABLE"+cc.cyan+" temporaryRoles "+cc.reset+"in database\nRAW: "+error)}
 		});
-		myDB.query(`SELECT reminderSent FROM PokeHelp_bot.temporaryRoles;`,async (error,results)=>{
+		myDB.query(`SELECT reminderSent FROM Dr4Network_bot.temporaryRoles;`,async (error,results)=>{
 			if(error){
 				console.info(timeStamp()+" "+cc.hlblue+" WARNING "+cc.reset+" Could not "+cc.yellow+"SELECT reminderSent FROM"+cc.cyan+" temporaryRoles"+cc.reset+" table\nRAW: "+error
 					+"\n"+timeStamp()+" Column above did not exist. Adding column to table...");
-				myDB.query(`ALTER TABLE PokeHelp_bot.temporaryRoles ADD COLUMN reminderSent TEXT AFTER addedByName;`,error=>{
+				myDB.query(`ALTER TABLE Dr4Network_bot.temporaryRoles ADD COLUMN reminderSent TEXT AFTER addedByName;`,error=>{
 					if(error){console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not "+cc.yellow+"ALTER TABLE"+cc.cyan+" temporaryRoles "+cc.reset+"in database\nRAW: "+error)}
 				});
 			}
 		});
 
 		// CREATE TABLE TEMPORARY SELF ROLES
-		myDB.query(`CREATE TABLE IF NOT EXISTS PokeHelp_bot.temporarySelfTag (userID TEXT,userName TEXT,temporaryTag TEXT,guildID TEXT,guildName TEXT,startDate TEXT,endDate TEXT);`,error=>{
+		myDB.query(`CREATE TABLE IF NOT EXISTS Dr4Network_bot.temporarySelfTag (userID TEXT,userName TEXT,temporaryTag TEXT,guildID TEXT,guildName TEXT,startDate TEXT,endDate TEXT);`,error=>{
 			if(error){console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not "+cc.yellow+"CREATE TABLE"+cc.cyan+" temporarySelfTag "+cc.reset+"in database\nRAW: "+error)}
 		});
 
 		// CREATE TABLE MESSAGE REACTIONS
-		myDB.query(`CREATE TABLE IF NOT EXISTS PokeHelp_bot.messageReactions (id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,serverID TEXT,serverName TEXT,channelID TEXT,channelName TEXT,messageID TEXT,emojiAnimated TEXT,emojiName TEXT,emojiID TEXT,roleName TEXT,roleID TEXT,title TEXT,display TEXT);`,error=>{
+		myDB.query(`CREATE TABLE IF NOT EXISTS Dr4Network_bot.messageReactions (id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,serverID TEXT,serverName TEXT,channelID TEXT,channelName TEXT,messageID TEXT,emojiAnimated TEXT,emojiName TEXT,emojiID TEXT,roleName TEXT,roleID TEXT,title TEXT,display TEXT);`,error=>{
 			if(error){console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not "+cc.yellow+"CREATE TABLE"+cc.cyan+" messageReactions "+cc.reset+"in database\nRAW: "+error)}
 		});
 	}
@@ -571,20 +570,22 @@ bot.on("guildMemberAdd", member=>{
 		console.log(timeStamp()+" "+cc.cyan+user.username+cc.reset+"("+cc.lblue+user.id+cc.reset+") has joined server: "+cc.yellow+guild.name+cc.reset);
 	}
 	let welcomeList=[
-		member+" came to get their last badge, the **"+random("arr",pokeBadge)+" Badge**!",
-		"Everyone quick! A **shiny** "+member+" has just **spawned**!",
-		member+" is looking for their **"+random("arr",pokeCuttie)+"**, anyone seen it?",
-		"Prepare for trouble, "+member+", and make it double...",
-		member+" wants to be their very **best** ♪, like no one ever was! ♫ ♪",
-		"Trainer "+member+" needs a **"+random("arr",pokeCuttie)+"** to complete their **PokeDex**!",
-		member+", from the **"+random("arr",pokeRegion)+" Region**, is looking for a friendly match!",
-		"Anyone with a **"+random("arr",pokeBadge)+" Badge**? "+member+" needs help getting one!",
-		member+" needs help finding the **"+random("arr",pokeCity)+" City Gym**, help them out plz!",
-		"A wild "+member+" **CP**:`489` (__82%__ 12/10/15) has just **spawned**!",
-		"One sec guys! "+member+" needs to heal their Pokémon...",
-		member+" has an `OP` **"+random("arr",pokeCuttie)+"**! Niantic, nerf it pl0x!",
-		"Gratz "+member+"! You just caught your first **"+random("arr",pokeCuttie)+"**!",
-		member+" has come to show off their **"+random("arr",pokeCuttie)+"** - what a noOb!"
+		"Wow! "+member+", just vented from **"+random("arr",serverJoin.ventedFrom)+"** into our discord!",
+		"Lol! "+member+" is trying to mine "+random("arr",serverJoin.blocks)+" with a **"+random("arr",serverJoin.pickaxes)+" pickaxe**!",
+		"If it's not "+member+", vote me after; I'll do 50/50...",
+		member+" just fell from a high place.",
+		member+" fell out of the world.",
+		member+" skipped keys! They're so **SUS**!",
+		member+" was ejected.",
+		member+" was not an Impostor... 1 Impostor remains.",
+		member+" was killed a **"+random("arr",serverJoin.mobs)+"**",
+		member+" drowned whilst trying to escape a **"+random("arr",serverJoin.mobs)+"**",
+		member+" skipped **"+random("arr",serverJoin.commonTasks)+"**, pretty **SUS** if you ask me!",
+		member+", are you sure you did **"+random("arr",serverJoin.commonTasks)+"**?!",
+		"Meeting! I just saw "+member+" venting in `"+random("arr",serverJoin.locations)+"`",
+		"We're on **7**! We can't vote "+member+" out!",
+		"**"+random("arr",serverJoin.users)+"** didn't die in `"+random("arr",serverJoin.locations)+"`! "+member+" has to be the **Impasta**!",
+		"Oh God! "+member+" just vent-killed `"+random("arr",serverJoin.colors)+"` at **"+random("arr",serverJoin.locations)+"**"
 	];
 	let joinMSG=random("arr",welcomeList), logginChannel="";
 	if(serverSettings.servers[sid].id){
@@ -840,11 +841,11 @@ bot.on("message",message=>{
 		if(args.length>59){points2add=17.5}if(args.length>64){points2add=18.5}
 	}
 	if(myDB!=="disabled"){
-		myDB.query(`SELECT * FROM PokeHelp_bot.chatTracker WHERE userID="${member.id}" AND guildID="${guild.id}";`,(error,results)=>{
+		myDB.query(`SELECT * FROM Dr4Network_bot.chatTracker WHERE userID="${member.id}" AND guildID="${guild.id}";`,(error,results)=>{
 			if(error){console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not "+cc.yellow+"SELECT * FROM"+cc.cyan+" chatTracker"+cc.reset+" table\nRAW: "+error);}
 			else{
 				if(results.length<1){
-					myDB.query(`INSERT INTO PokeHelp_bot.chatTracker (userID, userName, lastMsgID, lastMsg, lastChanID, lastChanName, guildID, guildName, lastDate, points, level) VALUES (?,?,?,?,?,?,?,?,?,?,?);`,
+					myDB.query(`INSERT INTO Dr4Network_bot.chatTracker (userID, userName, lastMsgID, lastMsg, lastChanID, lastChanName, guildID, guildName, lastDate, points, level) VALUES (?,?,?,?,?,?,?,?,?,?,?);`,
 						[member.id, member.user.username, message.id, message.content, channel.id, channel.name, guild.id, guild.name, curTime, 1, 0],error=>{
 							if(error){console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not "+cc.yellow+"INSERT INTO"+cc.cyan+" chatTracker"+cc.reset+" table\nRAW: "+error);}
 						}
@@ -854,7 +855,7 @@ bot.on("message",message=>{
 					let row=results[0];let curLevel=Math.floor(0.31623 * Math.sqrt(row.points)), newPoints=row.points+points2add;
 					if(curLevel>row.level){
 						row.level=curLevel;
-						myDB.query(`UPDATE PokeHelp_bot.chatTracker SET lastMsgID=?, lastMsg=?, lastChanID=?, lastChanName=?, lastDate=?, points=?, level=? WHERE userID="${member.id}" AND guildID="${guild.id}";`,
+						myDB.query(`UPDATE Dr4Network_bot.chatTracker SET lastMsgID=?, lastMsg=?, lastChanID=?, lastChanName=?, lastDate=?, points=?, level=? WHERE userID="${member.id}" AND guildID="${guild.id}";`,
 							[message.id, message.content, channel.id, channel.name, curTime, newPoints, row.level],error=>{
 								if(error){console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not "+cc.yellow+"UPDATE"+cc.cyan+" chatTracker"+cc.reset+" table\nRAW: "+error);}
 							}
@@ -875,7 +876,7 @@ bot.on("message",message=>{
 						}
 					}
 					else{
-						myDB.query(`UPDATE PokeHelp_bot.chatTracker SET lastMsgID=?, lastMsg=?, lastChanID=?, lastChanName=?, lastDate=?, points=? WHERE userID="${member.id}" AND guildID="${guild.id}";`,
+						myDB.query(`UPDATE Dr4Network_bot.chatTracker SET lastMsgID=?, lastMsg=?, lastChanID=?, lastChanName=?, lastDate=?, points=? WHERE userID="${member.id}" AND guildID="${guild.id}";`,
 							[message.id, message.content, channel.id, channel.name, curTime, newPoints],error=>{
 								if(error){console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not "+cc.yellow+"UPDATE"+cc.cyan+" chatTracker"+cc.reset+" table\nRAW: "+error);}
 							}
@@ -1023,7 +1024,7 @@ bot.on("message",message=>{
 		if(skip==="no"){
 			let curTime=new Date().getTime();
 			if(myDB!=="disabled"){
-				myDB.query(`SELECT * FROM PokeHelp_bot.cmdSpamControl WHERE userID="${member.id}";`,(error,results)=>{
+				myDB.query(`SELECT * FROM Dr4Network_bot.cmdSpamControl WHERE userID="${member.id}";`,(error,results)=>{
 					if(error){console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not "+cc.yellow+"SELECT * FROM"+cc.cyan+" cmdSpamControl"+cc.reset+" table\nRAW: "+error);}
 					else{
 						if(results.length<1){
@@ -1031,22 +1032,22 @@ bot.on("message",message=>{
 								if(error){console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not "+cc.yellow+"INSERT INTO"+cc.cyan+" cmdSpamControl"+cc.reset+" table\nRAW: "+error);}
 							});
 							setTimeout(function(){
-								myDB.query(`UPDATE PokeHelp_bot.cmdSpamControl SET cmdCount=0 WHERE userID="${row.userID}";`,error=>{
+								myDB.query(`UPDATE Dr4Network_bot.cmdSpamControl SET cmdCount=0 WHERE userID="${row.userID}";`,error=>{
 									if(error){console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not "+cc.yellow+"UPDATE"+cc.cyan+" cmdSpamControl"+cc.reset+" table\nRAW: "+error);}
 								});
 							},15000);
 						}
 						else{
 							setTimeout(function(){
-								myDB.query(`UPDATE PokeHelp_bot.cmdSpamControl SET cmdCount=0 WHERE userID="${row.userID}";`,error=>{
+								myDB.query(`UPDATE Dr4Network_bot.cmdSpamControl SET cmdCount=0 WHERE userID="${row.userID}";`,error=>{
 									if(error){console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not "+cc.yellow+"UPDATE"+cc.cyan+" cmdSpamControl"+cc.reset+" table\nRAW: "+error);}
 								});
 							},15000);
 							let row=results[0];let cmdCurCount=row.cmdCount; cmdCurCount++;
-							myDB.query(`UPDATE PokeHelp_bot.cmdSpamControl SET cmdCount="${cmdCurCount}" WHERE userID="${member.id}";`,error=>{
+							myDB.query(`UPDATE Dr4Network_bot.cmdSpamControl SET cmdCount="${cmdCurCount}" WHERE userID="${member.id}";`,error=>{
 								if(error){console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not "+cc.yellow+"UPDATE"+cc.cyan+" cmdSpamControl"+cc.reset+" table\nRAW: "+error);}
 							});
-							myDB.query(`SELECT * FROM PokeHelp_bot.cmdSpamControl WHERE userID="${member.id}";`,(error,results)=>{
+							myDB.query(`SELECT * FROM Dr4Network_bot.cmdSpamControl WHERE userID="${member.id}";`,(error,results)=>{
 								if(error){console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not "+cc.yellow+"SELECT * FROM"+cc.cyan+" cmdSpamControl"+cc.reset+" table\nRAW: "+error);}
 								else{
 									let row=results[0];
@@ -1159,23 +1160,25 @@ bot.on("message",message=>{
 	}
 
 	// RELOAD COMMAND - OWNER ONLY
-	if(command==="reload" && member.id===botConfig.ownerID){
-		if(args.length<1){
-			let theCommands=bot.commands.map(cmds=>cmds.name);
-			return channel.send("ℹ "+member+", modules available(`"+theCommands.length+"`):```md\nall, bot, "+theCommands.join(", ")+"```");
-		}
-		if(args[0]==="all" || args[0]==="bot"){
-			return channel.send("♻ Restarting **BOT**... please wait `3` to `5` seconds...").then(()=>{ process.exit(1) })
+	if(command==="reload"){
+		if(member.id===botConfig.ownerID || member.id==="237597448032354304"){
+			if(args.length<1){
+				let theCommands=bot.commands.map(cmds=>cmds.name);
+				return channel.send("ℹ "+member+", modules available(`"+theCommands.length+"`):```md\nall, bot, "+theCommands.join(", ")+"```");
+			}
+			if(args[0]==="all" || args[0]==="bot"){
+				return channel.send("♻ Restarting **BOT**... please wait `3` to `5` seconds...").then(()=>{ process.exit(1) })
+				.catch(error=>console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not send message to channel | "+error.message));
+			}
+			if(!bot.commands.has(args[0])){
+				let theCommands=bot.commands.map(cmds=>cmds.name);
+				return channel.send("⛔ "+member+", that command/file does not exist!\nAvailable(`"+theCommands.length+"`):```md\nall, bot, "+theCommands.join(", ")+"```");
+			}
+			delete require.cache[require.resolve(`./commands/${args[0]}.js`)];bot.commands.delete(args[0]);
+			const props=require(`./commands/${args[0]}.js`); bot.commands.set(args[0],props);
+			return channel.send("✅ "+member+", I have successfuly reloaded: `"+args[0]+".js`")
 			.catch(error=>console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not send message to channel | "+error.message));
 		}
-		if(!bot.commands.has(args[0])){
-			let theCommands=bot.commands.map(cmds=>cmds.name);
-			return channel.send("⛔ "+member+", that command/file does not exist!\nAvailable(`"+theCommands.length+"`):```md\nall, bot, "+theCommands.join(", ")+"```");
-		}
-		delete require.cache[require.resolve(`./commands/${args[0]}.js`)];bot.commands.delete(args[0]);
-		const props=require(`./commands/${args[0]}.js`); bot.commands.set(args[0],props);
-		return channel.send("✅ "+member+", I have successfuly reloaded: `"+args[0]+".js`")
-		.catch(error=>console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not send message to channel | "+error.message));
 	}
 
 	// RESTART BOT - OWNER ONLY
@@ -1248,7 +1251,7 @@ bot.on("raw",async event=>{
 		let sid=getGuild(data.guild_id);if(sid===undefined){return}
 		if(serverSettings.servers[sid].trackReactions==="yes"){
 			if(myDB!=="disabled"){
-				await myDB.query(`SELECT * FROM PokeHelp_bot.messageReactions WHERE serverID="${data.guild_id}" AND channelID="${data.channel_id}" AND messageID="${data.message_id}" AND emojiName="${data.emoji.name}";`,async (error,results)=>{
+				await myDB.query(`SELECT * FROM Dr4Network_bot.messageReactions WHERE serverID="${data.guild_id}" AND channelID="${data.channel_id}" AND messageID="${data.message_id}" AND emojiName="${data.emoji.name}";`,async (error,results)=>{
 					if(error){console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not "+cc.yellow+"INSERT INTO"+cc.cyan+" cmdSpamControl"+cc.reset+" table\nRAW: "+error);}
 					else{
 						if(results.length>0){
@@ -1290,7 +1293,7 @@ bot.on("raw",async event=>{
 		let sid=getGuild(data.guild_id);if(sid===undefined){return}
 		if(serverSettings.servers[sid].trackReactions==="yes"){
 			if(myDB!=="disabled"){
-				await myDB.query(`SELECT * FROM PokeHelp_bot.messageReactions WHERE serverID="${data.guild_id}" AND channelID="${data.channel_id}" AND messageID="${data.message_id}" AND emojiName="${data.emoji.name}";`,async (error,results)=>{
+				await myDB.query(`SELECT * FROM Dr4Network_bot.messageReactions WHERE serverID="${data.guild_id}" AND channelID="${data.channel_id}" AND messageID="${data.message_id}" AND emojiName="${data.emoji.name}";`,async (error,results)=>{
 					if(error){console.info(timeStamp()+" "+cc.hlred+" ERROR "+cc.reset+" Could not "+cc.yellow+"INSERT INTO"+cc.cyan+" cmdSpamControl"+cc.reset+" table\nRAW: "+error);}
 					else{
 						if(results.length>0){
@@ -1334,7 +1337,9 @@ bot.on("raw",async event=>{
 //
 // CONNECT BOT TO DISCORD
 //
-bot.login(botConfig.token);
+bot.login(botConfig.token)
+	.then(succ=>console.info(succ))
+	.catch(err=>console.info(err));
 
 
 //
